@@ -1,2 +1,2 @@
 # FruitBucket
-A Ecommerce application build using Djanog
+A Ecommerce application using Djanog
