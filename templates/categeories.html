@@ -1,0 +1,33 @@
+
+{% extends "_base.html" %}
+
+
+{% block content %}
+<div>
+{% if categeories %}
+
+<div style="background-image: url('/media/documents/home2.gif'); width:100%; height: 100%; background-size:100% 100%; background-repeat: no-repeat;">
+<ul class="demo-list-item mdl-list" style="float:left;margin-top:6%;margin-left:6%;">
+<h3><u>Categeories</u></h3>
+
+{% for categeory in categeories%}
+  <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+
+    <a href="{% url 'fruitapp:categeory' categeory.id %}" style="color:orange;font-size:30px;text-decoration:None;"> {{ categeory.name }} </a>
+
+    </span>
+  </li>
+{% endfor %}
+    </ul>
+</div>
+
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+</div>
+{% endblock %}
+
+
+
+

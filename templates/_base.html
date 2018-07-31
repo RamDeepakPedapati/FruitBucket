@@ -1,0 +1,230 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{{Title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
+	<!--<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/materia/bootstrap.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/media/documents/footer-distributed-with-address-and-phones.css">
+<link rel="stylesheet" href="/media/documents/demo.css">
+<style type="text/css">
+	.navbar-expand-lg {
+     background-color: #5e90e0;
+     border-color: #222222;
+}
+.button{
+	margin-top: 100px;
+}
+
+
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+
+.mdl-grid
+{
+width:100%;
+align:center;
+}
+
+.mdl-cell{
+width:31%;
+}
+
+.demo-card-square{
+width:85%;
+}
+
+
+
+a:hover{
+text-decoration:none;
+
+
+
+}
+
+html {
+  height: 125%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 14rem;
+  min-height: 100%;
+}
+
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+</style>
+
+
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:lightblue;height:10%;">
+  <div class="container-fluid" >
+    <!--<div class="navbar-header">-->
+        <!--<img src="/media/documents/fruitbucket1.jpg" alt="Los Angeles" style="height:80%;width:10%">-->
+      <!--<a class="navbar-brand" href="{% url 'fruitapp:home' %}">GoMango</a>-->
+    <!--</div>-->
+
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
+          <span class="sr-only">Toggle navigation</span>
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+        </button>
+        <a class="navbar-brand" href="{% url 'fruitapp:home' %}"><img src="/media/documents/logo.jpg" alt="Dispute Bills" style="width:20%;   %"/>
+        </a>
+      </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'fruitapp:home' %}">Home</a></li>
+      <li><a href="{% url 'fruitapp:products' %}">Products</a></li>
+      <li><a href="{% url 'fruitapp:about' %}">About</a></li>
+      </ul>
+
+      <form class="navbar-form navbar-left" action="http://127.0.0.1:8000/search/" encType="multipart/form-data" method=get>
+        <div class="input-group">
+          <input type="text" name="query" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+        {% if request.user.is_authenticated%}
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+           {{ request.user.username }}
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'fruitapp:profile' %}">Profile</a></li>
+            <li><a href="{% url 'fruitapp:cart' %}">My cart</a></li>
+            <li><a href="{% url 'fruitapp:orders' %}">My Orders</a></li>
+            <li><a href="{% url 'fruitapp:favorite' %}">Favorites</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+          <li>
+               <div>
+              <button class="btn btn-default" style="margin-top:10px">
+                  <span class="glyphicon glyphicon-log-out"></span>
+                  <a href="{% url 'fruitapp:logout' %}">Logout</a>
+            </button>
+            </div>
+      </li>
+      </ul>
+        {% else %}
+        <button class="btn btn-default nav navbar-nav navbar-right" style="margin-top:10px">
+                  <a href="{% url 'fruitapp:login' %}">Login/SignUp</a>
+            </button>
+        {% endif %}
+
+    </div>
+  </div>
+</nav>
+
+<!--<div class="container container fluid" style="margin-top:6%;">-->
+{% block content %}
+
+{% endblock %}
+
+<footer class="footer footer-distributed">
+
+			<div class="footer-left">
+
+				<h3><span>Fruit Bucket</span></h3>
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">FruitBucket &copy; 2018</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>21 Revolution Street</span> Vizag, India</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+91 1234567890</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">support@fruitbucket.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About the company</span>
+
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="https://www.facebook.com/ram.deepak.12"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="https://github.com/RamDeepakPedapati"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>
+
+
+
+<!--</div>-->
+<script>
+$(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+});
+</script>
+</body>
+
+</html>

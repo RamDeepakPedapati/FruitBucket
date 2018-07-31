@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container container fluid" style="margin-top:5%;">
+
+
+{% if products %}
+<table class="table table-striped">
+<tr>
+<th> Order Id </th>
+<th> Products </th>
+<th> Delete </th>
+</tr>
+{% for product,orders  in products %}
+
+<tr>
+    <td>
+    {{ orders.id }}
+    </td>
+
+
+    <td>
+        {{ product.products }}
+    </td>
+    <td>
+        <a href="{% url 'fruitapp:deleteorder' orders.id %}" >delete</a>
+    </td>
+</tr>
+
+{% endfor %}
+</table>
+</div>
+{% else %}
+<p>No Details.</p>
+{% endif %}
+{% endblock %}
+
+
+
+

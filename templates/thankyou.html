@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container" style="margin-top:6%;">
+    <h3>
+        Thank you for purchasing your order will be delivered soon..........
+    </h3>
+</div>
+
+
+<script>
+    setTimeout(function(){
+       window.location.href = "{% url 'fruitapp:products' %}";
+    }, 2000);
+</script>
+{% endblock %}

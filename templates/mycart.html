@@ -1,0 +1,74 @@
+
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container container fluid" style="margin-top:5%;">
+{% if carts %}
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Product</th>
+        <th>Count</th>
+      <th>Price Of Each</th>
+      <th>Remove </th>
+    </tr>
+  </thead>
+<tbody>
+{% for product, cart in products %}
+
+<tr>
+      <td class="mdl-data-table__cell--non-numeric"><img src="{{product.image.url}}" class="img-responsive" style="width:150px;height:150px">
+      <br/>{{product.name}}<br/>
+        {{product.description}}<br/>
+      </td>
+    <td>
+        <a href="{% url 'fruitapp:decreasecount' product.id %}" style="color:black">
+    <button class="button button4" style="    background-color: lightblue; /* Green */
+    border-radius: 5px;
+    padding: 1px 10px;
+    font-size: 16px;
+    margin: 4px 2px;">-</button>
+    </a>
+        {{cart.count}}
+    <a href="{% url 'fruitapp:updatecart' product.id %}" style="color:black">
+    <button class="button button4" style="    background-color: lightblue; /* Green */
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 16px;
+    margin: 4px 2px;">
+        +</button>
+
+    </a>
+    <!--<button class="mdl-button mdl-js-button mdl-button&#45;&#45;fab mdl-button&#45;&#45;mini-fab mdl-button&#45;&#45;colored" >-->
+        <!--<i class="material-icons"><a href="{% url 'fruitapp:updatecart' product.id %}" style="color:black">add</a></i>-->
+
+    </button>
+    </td>
+    <td>Rs: {{ product.price }}</td>
+    <td>
+    <span class="mdl-chip mdl-chip--deletable">
+    <span class="mdl-chip__text"><a href="{% url 'fruitapp:cartdelete' product.id %}">Remove</a></span>
+
+        <button type="button" class="mdl-chip__action"><i class="material-icons">cancel</i></button>
+
+    </span>
+    </td>
+    </tr>
+{% endfor %}
+ </tbody>
+</table>
+<h2 style="margin-left:40%;">Total:{{ total }}</h2>
+<a href="{% url 'fruitapp:addaddress' %}">
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left:43%;">
+  Check out
+</button>
+</a>
+{% else %}
+<p>No items are added to cart.</p>
+{% endif %}
+</div>
+{% endblock %}
+
+
+
+

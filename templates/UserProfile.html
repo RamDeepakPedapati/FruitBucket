@@ -1,0 +1,32 @@
+{% extends "_base.html" %}
+
+{% block content %}
+-<div class="container container fluid well" style="margin-top:4%;">
+
+    <h2><caption>User Details</caption></h2>
+<table class="table table-striped">
+
+{% if user_obj %}
+{% for user in user_obj %}
+<tr><td>User Name</td><td> {{ user.username }}</td></tr>
+<tr><td>First Name</td><td> {{ user.first_name}}</td></tr>
+<tr><td>Last Name</td><td> {{ user.last_name }}</td></tr>
+{% endfor %}
+{% else %}
+<p>No Details.</p>
+{% endif %}
+
+{% if user_info_obj %}
+{% for user in user_info_obj %}
+<tr><td>Email</td><td> {{ user.email }}</td></tr>
+{% endfor %}
+{% else %}
+<p>No Details. </p>
+{% endif %}
+</table>
+</div>
+{% endblock %}
+
+
+
+
